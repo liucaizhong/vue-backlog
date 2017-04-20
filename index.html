@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <title>Backlog</title>
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="vue.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
   </head>
   <body>
     <div class="title">
@@ -15,23 +18,39 @@
           <div class="main-title">添加任务：</div>
           <input type="text" class="input-task"
             placeholder="例如：吃饭，提示：回车即可完成添加任务。"
+            @keyup.enter="addTodo"
+            v-model="todo"
           />
           <div class="panel">
-            <div class="tips">0个任务未完成</div>
+            <div class="tips">{{unfinished}}个任务未完成</div>
             <div class="tab">
-              <span class="active">所有任务</span>
-              <span>未完成的任务</span>
-              <span>完成的任务</span>
+              <a href="#all" :class="{active: visibility === 'all'}">所有任务</a>
+              <a href="#unfinished" :class="{active: visibility === 'unfinished'}">未完成的任务</a>
+              <a href="#finished" :class="{active: visibility === 'finished'}">完成的任务</a>
             </div>
           </div>
           <div class="list-title">任务列表：</div>
           <div class="tasks">
-            <span class="no-task-tip">还没有添加任何任务</span>
+            <span class="no-task-tip" v-show="!list.length">还没有添加任何任务</span>
             <ul class="list">
-              <li>
-                <div role="checkbox" class="btn-check"></div>
-                <input type="text" name="" value="吃饭睡觉打豆豆" class="input-name" />
-                <div role="button" class="btn-del"></div>
+              <li v-for="item in filterList" :class="{editing: item === editTodos}">
+                <div class="view">
+                  <el-checkbox class="btn-check" :checked="item.isChecked" v-model="item.isChecked"></el-checkbox>
+                  <!-- <input type="checkbox" class="btn-check" /> -->
+                  <label class="item" @dblclick="editTodo(item)" :class="{completed: item.isChecked}">{{item.title}}</label>
+                  <el-button icon="close"
+                    class="btn-del"
+                    @click="delTask(item)">
+                  </el-button>
+                  <!-- <input type="button" class="btn-del" /> -->
+                </div>
+                <input type="text" class="edit"
+                  v-focus="item === editTodos"
+                  @keyup.esc="canclEdit(item)"
+                  v-model="item.title"
+                  @keyup.enter="editDone(item)"
+                  @blur="editDone(item)"
+                />
               </li>
             </ul>
           </div>
@@ -39,7 +58,6 @@
       </div>
     </div>
 
-    <script type="text/javascript" src="vue.js" />
-    <script type="text/javascript" src="app.js" />
+    <script type="text/javascript" src="app.js"></script>
   </body>
 </html>
