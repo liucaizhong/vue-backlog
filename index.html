@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Backlog</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="title">
+      任务计划列表
+    </div>
+    <div class="container">
+      <div class="content">
+        <div class="main">
+          <div class="main-title">添加任务：</div>
+          <input type="text" class="input-task"
+            placeholder="例如：吃饭，提示：回车即可完成添加任务。"
+          />
+          <div class="panel">
+            <div class="tips">0个任务未完成</div>
+            <div class="tab">
+              <span class="active">所有任务</span>
+              <span>未完成的任务</span>
+              <span>完成的任务</span>
+            </div>
+          </div>
+          <div class="list-title">任务列表：</div>
+          <div class="tasks">
+            <span class="no-task-tip">还没有添加任何任务</span>
+            <ul class="list">
+              <li>
+                <div role="checkbox" class="btn-check"></div>
+                <input type="text" name="" value="吃饭睡觉打豆豆" class="input-name" />
+                <div role="button" class="btn-del"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="vue.js" />
+    <script type="text/javascript" src="app.js" />
+  </body>
+</html>

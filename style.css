@@ -1,0 +1,96 @@
+body {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 50%;
+  align-self: center;
+}
+
+.title {
+  font-size: 20px;
+  color: white;
+  height: 40px;
+  text-indent: 25%;
+  line-height: 40px;
+  background-color: rgb(217, 58, 8);
+}
+
+.main-title {
+  font-size: 18px;
+  padding: 10px 0;
+  font-weight: bold;
+}
+
+.panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.tips {
+  font-size: 14px;
+  color: #cf530f;
+  font-weight: bold;
+}
+
+.list-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.tab {
+  font-size: 10px;
+}
+
+.tab > span {
+  padding: 5px 5px;
+}
+
+.tab > .active {
+  border: 1px solid #dbe6e9;
+}
+
+.input-task, .input-name {
+  width: 100%;
+  height: 30px;
+}
+
+ul {
+  list-style: none;
+  padding: 0 0;
+}
+
+li {
+  width: 100%;
+  position: relative;
+  background-color: white;
+}
+
+.input-name {
+  padding-left: 30px;
+}
+
+.btn-check, .btn-del {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 5px;
+}
+
+.btn-check {
+  left: 5px;
+  border-radius: 50%;
+  border: 1px solid #e8faf4;
+}
+
+.btn-del {
+  right: 5px;
+}
